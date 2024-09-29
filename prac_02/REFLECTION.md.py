@@ -23,7 +23,8 @@ Replace each `...` with your meaningful answer.
 - Allowing myself more time to get through the practices. I hope that they
     only take an hour or two, then I become stressed and annoyed at myself
     for taking longer.
-
+- Need to change that I'm not doing the extensions. I need to make more time to
+    go through them so I can learn more.
 
 ## What are you currently doing poorly for practicals in this subject that you will change?
 - Remembering the functions and how to structure the code properly. I know this comes with
