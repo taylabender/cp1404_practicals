@@ -1,6 +1,7 @@
 """
 Refactoring broken scores to include functions
 """
+import random
 
 def main():
     """ get score from input """
@@ -19,5 +20,8 @@ def determine_grade(score):
     elif score <= 100:
         print("Excellent")
 
+random_score = random.randint(0, 100)
+determine_grade(random_score)
+print(random_score)
 
 main()
