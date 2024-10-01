@@ -21,4 +21,6 @@ Write the answers to the questions below in comments
 # number being 5.5. The function will return any floating-point
 # numbers between the two values.
 
+import random
 
+print(random.randint(1, 100))
