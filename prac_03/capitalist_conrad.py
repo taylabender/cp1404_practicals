@@ -14,10 +14,14 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 1.0
 MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
+FILENAME = "stock_price.txt"
 
+# create file for stock price output
+out_file = open(FILENAME, 'w')
+
+# print initial price
 price = INITIAL_PRICE
-print(f"${price:,.2f}")
-
+print(f"Initial price is: ${price:,.2f}", file=out_file)
 day = 0
 
 
@@ -37,4 +41,5 @@ while MIN_PRICE <= price <= MAX_PRICE:
 
 
     price *= (1 + price_change)
-    print(f"On day {day} price is: ${price:,.2f}")
+    print(f"On day {day} price is: ${price:,.2f}", file=out_file)
+out_file.close()
