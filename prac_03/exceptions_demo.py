@@ -28,6 +28,7 @@ def main():
 
 
 def get_fraction():
+    """ This function will get numerator and denominator from user"""
     numerator = int(input("Enter the numerator: "))
     denominator = int(input("Enter the denominator: "))
     return denominator, numerator
