@@ -14,8 +14,7 @@ Answer the following questions:
 def main():
 
     try:
-        numerator = int(input("Enter the numerator: "))
-        denominator = int(input("Enter the denominator: "))
+        denominator, numerator = get_fraction()
         if denominator == 0:
             print("The denominator cannot be 0.")
         else:
@@ -26,6 +25,12 @@ def main():
     except ZeroDivisionError:
         print("Cannot divide by zero!")
     print("Finished.")
+
+
+def get_fraction():
+    numerator = int(input("Enter the numerator: "))
+    denominator = int(input("Enter the denominator: "))
+    return denominator, numerator
 
 
 main()
