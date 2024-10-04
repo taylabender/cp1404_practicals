@@ -17,5 +17,21 @@ for line in in_file:
 in_file.close()
 
 # Task 3
+with open("numbers.txt", "r") as out_file_numbers:
+    lines = out_file_numbers.readlines()
+    a = int(lines[0].strip())
+    b = int(lines[1].strip())
+    c = (a + b)
+    print(f"{a} + {b} = {c}")
+
+# Task 4
+total = 0
+with open("numbers.txt", "r") as out_file_numbers_02:
+    for line in out_file_numbers_02:
+        numbers = int(line.strip())
+        total += numbers
+print(f"The sum of all numbers in numbers.txt is {total}")
+
+
 
 
