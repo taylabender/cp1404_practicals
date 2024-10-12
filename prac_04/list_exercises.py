@@ -14,6 +14,7 @@ def main():
 
 
 def print_list(average):
+    """ Print output information about the numbers. """
     print(f"The first number is {numbers[0]:.0f}")
     print(f"The last number is {numbers[-1]:.0f}")
     print(f"The smallest number is {min(numbers):.0f}")
@@ -22,6 +23,7 @@ def print_list(average):
 
 
 def get_number():
+    """ Get numbers from user """
     for i in range(5):
         number = float(input(f"Number {i + 1}: "))
         numbers.append(number)
