@@ -2,18 +2,23 @@
 Lottery ticket generator
 """
 import random
-columns = 6
+NUMBERS_PER_LINE = 6
 
+try:
+       number_of_quick_pick = int(input("Enter the number of quick picks: "))
+       while number_of_quick_pick < 0:
+              print("Invalid number, please enter positive number")
+              quick_pick = int(input("Enter the number of quick picks: "))
 
-quick_pick = int(input("Enter the number of quick picks: "))
-if quick_pick <= 0:
-       print("Invalid number, please enter positive number")
-else:
-       for i in range(quick_pick):
+       for i in range(number_of_quick_pick):
               quick_pick =[]
-
-# while len(numbers) < quick_pick:
-#       for i in range(quick_pick):
-#             quick_pick = g
-
+              for j in range(NUMBERS_PER_LINE):
+                     number = random.randint(1, 45)
+                     while number in quick_pick:
+                            number = random.randint(1, 45)
+                     quick_pick.append(number)
+              quick_pick.sort()
+              print(" ".join(f"{number:2d}" for number in quick_pick))
+except ValueError:
+       print("Invalid input.")
 
