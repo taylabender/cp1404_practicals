@@ -2,11 +2,16 @@
 Ask user for their username
 """
 
-usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn',
-             'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+def main():
 
-username = input("Enter username: ")
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn',
+                 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
 
-if username != usernames:
-    print("Invalid username")
+    username = input("Enter username: ")
+    if username in usernames:
+        print("Welcome back")
+    else:
+        print("Invalid username")
+
+
 
