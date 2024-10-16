@@ -16,7 +16,6 @@ the user decide what to do).
 #    display menu
 #    get choice
 # display finished message
-
 # Display menu
 menu_list = "(h)ello\n(g)oodbye\n(q)uit"
 name = input("Enter name? ")
