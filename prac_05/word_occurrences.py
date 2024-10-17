@@ -1,6 +1,6 @@
 """
 Estimate: 25 minutes
-Actual:
+Actual: 15 minutes
 """
 
 sentence = input("Enter a sentence: ")
