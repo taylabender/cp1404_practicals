@@ -1,24 +1,1 @@
-"""
-program to look up hexadecimal colours
-"""
-
-CODE_TO_COLOUR = {"#00ffff": "aqua", "#ffbf00": "amber", "#fbceb1": "apricot",
-                "#89cff0": "babyblue", "3ffee135": "bananayellow", "#ff7f50": "coral",
-                "#fffdd0": "cream", "350c878": "emerald", "#4b0082": "indigo"}
-
-colour_code = list(CODE_TO_COLOUR.keys())
-colour_name = list(CODE_TO_COLOUR.values())
-for colour_code, colour_name in CODE_TO_COLOUR.items():
-    print(f"{colour_name}")
-
-print("-------------------")
-print("Please enter colour to look up hexadecimal code")
-
-while colour_name != CODE_TO_COLOUR:
-    get_colour_name = input("\nEnter colour name here: ").strip().lower()
-    if get_colour_name in CODE_TO_COLOUR:
-         print(get_colour_name, "is", CODE_TO_COLOUR[colour_code])
-    else:
-        print(get_colour_name, "is not in the database.")
-
-
+"""program to look up hexadecimal colours"""CODE_TO_COLOUR = {"#00ffff": "aqua", "#ffbf00": "amber", "#fbceb1": "apricot",                "#89cff0": "babyblue", "#3ffee135": "bananayellow", "#ff7f50": "coral",                "#fffdd0": "cream", "#350c878": "emerald", "#4b0082": "indigo"}# COLOUR_TO_CODE = {"aqua": "#00ffff", "amber": "#ffbf00", "apricot": "#fbceb1",#                 "babyblue": "#89cff0", "bananayellow": "#3ffee135", "coral": "#ff7f50",#                  "cream": "#fffdd0", "emerald": "#350c878", "indigo": "#4b0082"}COLOUR_TO_CODE = {v.lower(): k for k, v in CODE_TO_COLOUR.items()}colour_name = list(CODE_TO_COLOUR.keys())colour_code = list(CODE_TO_COLOUR.values())for colour_code, colour_name in CODE_TO_COLOUR.items():    print(f"{colour_name}")print("-------------------")print("Please enter colour to look up hexadecimal code")while colour_name != "":    get_colour_name = input("Colour to look up hexadecimal code: ").strip().lower()    if get_colour_name in COLOUR_TO_CODE:        print(f"{get_colour_name} is {COLOUR_TO_CODE[get_colour_name]}")    else:        print(f"{get_colour_name} is not in the database.")
