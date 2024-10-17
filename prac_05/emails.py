@@ -12,3 +12,9 @@ parts = username.split('.')
 suggested_name = " ".join(parts).title()
 
 confirmation = input(f"Is your name {suggested_name}? (Y/N) ").lower
+if confirmation != "y":
+    name = input("Enter your name: ")
+else:
+    name_from_email[email] = suggested_name
+
+
