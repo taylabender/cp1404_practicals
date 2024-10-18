@@ -4,6 +4,9 @@ Wimbledon champions data
 
 # Read and analyse CSV file
 FILENAME = 'wimbledon.csv'
+COUNTRY = 1
+CHAMPION = 2
+
 
 records = []
 with open(FILENAME, 'r', encoding="utf-8-sig") as in_file:
@@ -11,25 +14,25 @@ with open(FILENAME, 'r', encoding="utf-8-sig") as in_file:
     for line in in_file:
         parts = line.strip().split(",")
         records.append(parts)
-print(records)
 
 
 # Create dictionary of champions and their wins
 champion_count = {}
 countries = set()
 for record in records:
-    champion = record[1]  # Adjust index based on actual CSV structure
-    if champion in champion_count:
-        champion_count[champion] += 1
-    else:
-        champion_count[champion] = 1
+    countries.add(record[COUNTRY])
+    champion_count[record[CHAMPION]] = champion_count.get(record[CHAMPION], 0) + 1
 
 # Display champions and their wins
 print("Wimbledon Champions:")
-for champion, wins in champion_count.items():
-    print(f"{champion} {wins}")
+for name, count in champion_count.items():
+    print(f"{name:18} - {count}")
 
-# Get unique countries and sort them
-# convert set to sorted list
 # Display countries
+print(f"\nThese {len(countries)} countries have won Wimbledon: ")
+print(", ".join(country for country in sorted(countries)))
+
+
+
+
 
