@@ -2,10 +2,8 @@
 Estimate time: 30 min
 Actual time:
 """
-from module_04.names import names
 
-
-class Language:
+class ProgrammingLanguage:
     def __init__(self, name="", typing="", reflection="True", year=0):
         """Initialise programming language.
         name: Name of string

@@ -1,4 +1,4 @@
-from prac_06.programming_language import Language
+from prac_06.programming_language import ProgrammingLanguage
 
 python = ProgrammingLanguage("Python", "Dynamic", True, 1991)
 ruby = ProgrammingLanguage("Ruby", "Dynamic", True, 1995)
