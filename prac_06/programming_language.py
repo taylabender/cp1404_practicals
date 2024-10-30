@@ -2,6 +2,8 @@
 Estimate time: 30 min
 Actual time:
 """
+from module_04.names import names
+
 
 class Language:
     def __init__(self, name="", typing="", reflection="True", year=0):
@@ -11,6 +13,13 @@ class Language:
         reflection: True or False
         year: Year
         """
+        self.name = name
+        self.typing = typing
+        self.reflection = reflection
+        self.year = 0
 
+    def is_dynamic(self):
+        return self.typing == "Dynamic"
 
-
+    def __str__(self):
+        return f"{self.name} {self.typing} {self.reflection}, First appeared in {self.year}"
