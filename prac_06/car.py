@@ -33,4 +33,4 @@ class Car:
 
     def __str__(self):
         """Return string representation of the car."""
-        return f"{self.name}, {self.fuel}, {self._odometer}"
+        return f"{self.name}, fuel={self.fuel}, odometer={self._odometer}"
