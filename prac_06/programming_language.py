@@ -1,6 +1,6 @@
 """
 Estimate time: 30 min
-Actual time:
+Actual time: 40 mins
 """
 
 class ProgrammingLanguage:
