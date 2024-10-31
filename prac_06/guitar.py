@@ -13,3 +13,9 @@ class Guitar:
         self.name = name
         self.year = year
         self.cost = cost
+
+    def get_age(self):
+        self.year = 2024 - int(self.year)
+
+    def __str__(self):
+        return f"{self.name} ({self.year}) : ${self.cost:.2f}"
