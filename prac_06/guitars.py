@@ -2,14 +2,18 @@ from prac_06.guitar import Guitar
 
 def main():
     print("My guitars!")
-    guitar = []
+    guitars = []
 
+    # Get guitar details from user
     name = input("Guitar Name: ")
-    if name == "":
-        break
+    while name != "":
+        year = int(input("Enter a year: "))
+        cost = float(input("Enter a cost: "))
+        add_guitar = Guitar(name, year, cost)
+        guitars.append(add_guitar)
+        print(f"Guitar added: {add_guitar.name}")
+        print()
 
-    year = int(input("Enter a year: "))
-    cost = float(input("Enter a cost: "))
-    add_guitar = Guitar(name, year, cost)
-    guitar.append(Guitar(year, cost))
 
+
+main()

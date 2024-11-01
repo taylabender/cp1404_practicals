@@ -1,5 +1,8 @@
 """
 Estimate time: 30 min
+- Wrote a bit of the program before I had a 2hr class.
+8:30 to 8:50
+11:15 to
 Actual time:
 """
 
@@ -24,6 +27,7 @@ class Guitar:
         """Determine whether guitar is vintage."""
         return self.get_age() >= 50
 
+    # def add_guitar(self):
 
     def __str__(self):
         """Return a string representation of guitar."""
