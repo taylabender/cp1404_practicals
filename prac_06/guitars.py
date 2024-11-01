@@ -26,6 +26,7 @@ def main():
             print(f"Guitar {i}: {guitar.name:>20} ({guitar.year:>4}), worth $ {guitar.cost:>9,.2f} {vintage}")
 
 def get_user_input(guitars, name):
+    """ Get user input to add guitar. """
     year = int(input("Enter a year: "))
     cost = float(input("Enter a cost: "))
     add_guitar = Guitar(name, year, cost)
