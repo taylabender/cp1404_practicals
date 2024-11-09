@@ -1,6 +1,6 @@
 """
 Estimate time: 45min
-Actual time:
+Actual time: Probably 60-90min. Done over two days.
 """
 
 from prac_07.project import Project
@@ -24,43 +24,58 @@ def main():
     projects = []
     projects = load_project_data(PROJECT_FILENAME, projects)
     print(menu)
-    choice = input(">> ").upper()
+    choice = input("-> ").upper()
 
     while choice != "Q":
         if choice == "L":
             filename = input("Please enter a filename to load from: ")
             projects = load_project_data(filename, projects)
-            # print(projects)
-
         elif choice == "S":
             filename = input("Please enter a filename to save to: ")
             save_project(filename, projects)
-
         elif choice == "D":
             display_projects(projects)
-
         elif choice == "F":
-            date_string = input("Show projects that start after date (dd/mm/yyyy): ")
-            start_date = datetime.strptime(date_string, "%d/%m/%Y").date()
-            for project in sorted(projects, key=attrgetter("start_date")):
-                 if project.start_date >= start_date:
-                     print(f"   {project}")
-
-
+            filter_projects_by_dates(projects)
         elif choice == "A":
-            projects = add_project(projects)
-
-        if choice == "U":
-            break
+            add_project(projects)
+        elif choice == "U":
+            update_project(projects)
         else:
-            # print("Not a valid choice")
-            break
-    # print(menu)
-    # choice = input(">> ").upper()
-    # print("Thanks for using this project manager!")
+            print("Not a valid choice")
+
+        print(menu)
+        choice = input(">> ").upper()
+    save_project(PROJECT_FILENAME, projects)
+    print("Thanks for using this project manager!")
+
+
+def update_project(projects):
+    """ Update current projects"""
+    display_projects(projects)
+    for i, project in enumerate(projects):
+        print(f"{i}   {project}")
+    select_project = int(input("Select a project: "))
+    print(projects[select_project])
+    percentage = int(input("New percentage: "))
+    if percentage != "":
+        projects[select_project].percentage = percentage
+    priority = int(input("New priority: "))
+    if priority != "":
+        projects[select_project].priority = int(priority)
+
+
+def filter_projects_by_dates(projects):
+    """ Filter projects by chosen date """
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+    start_date = datetime.strptime(date_string, "%d/%m/%Y").date()
+    for project in sorted(projects, key=attrgetter("start_date")):
+        if project.start_date >= start_date:
+            print(f"   {project}")
 
 
 def save_project(filename, projects):
+    """ Save projects to file"""
     with open(filename, "w") as out_file:
         print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percent", file=out_file)
         for project in projects:
@@ -70,9 +85,7 @@ def save_project(filename, projects):
 
 
 def display_projects(projects):
-    """Display incomplete and complete projects without numbered indexing, or all projects with numbered indexing"""
-    for i, project in enumerate(projects):
-        print(f"{i}   {project}")
+    """Display incomplete and complete projects without numbered indexing. """
     print("Incomplete projects: ")
     for project in sorted(projects):
         if not project.is_complete():
@@ -84,6 +97,7 @@ def display_projects(projects):
 
 
 def add_project(projects):
+    """ Add project to projects list."""
     print("Let's add a new project")
     project_name = input("Name of project: ")
     start_date = input("Start date (dd/mm/yyyy): ")
@@ -104,7 +118,6 @@ def load_project_data(filename, projects):
     except FileNotFoundError:
         print("File not found.")
     return projects
-
 
 
 main()
