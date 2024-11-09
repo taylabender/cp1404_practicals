@@ -6,7 +6,7 @@ Actual time:
 from prac_07.project import Project
 from datetime import datetime
 
-FILENAME = 'projects.txt'
+PROJECT_FILENAME = 'projects.txt'
 
 # Display menu
 menu = ("(L)oad projects"
@@ -20,23 +20,31 @@ menu = ("(L)oad projects"
 
 def main():
     projects = []
-
-    # Load file
-    with open(FILENAME, 'r') as in_file:
-        in_file.readline()
-        for row in in_file:
-            row = row.split("\t")
-            projects.append(Project(row[0], row[1], int(row[2]), float(row[3]), int(row[4])))
-    
+    projects = load_project_data(PROJECT_FILENAME, projects)
     print(menu)
-    choice = input("<<<").upper()
+    choice = input(">> ").upper()
+
     while choice != "Q":
         if choice == "L":
-            break
+            filename = input("Please enter a filename to load from: ")
+            projects = load_project_data(filename, projects)
+            # print(projects)
+
         if choice == "S":
             break
+
         if choice == "D":
-            break
+            """Display incomplete and complete projects without numbered indexing, or all projects with numbered indexing"""
+            print("Incomplete projects: ")
+            for project in sorted(projects):
+                if not project.is_complete():
+                    print(f"  {project}")
+
+            print("Complete projects: ")
+            for project in sorted(projects):
+                if project.is_complete():
+                    print(f"  {project}")
+
         if choice == "F":
             break
         if choice == "A":
@@ -45,6 +53,20 @@ def main():
             break
         else:
             break
+
+
+def load_project_data(filename, projects):
+    # Load file
+    try:
+        with open(filename, 'r') as in_file:
+            in_file.readline()
+            for row in in_file:
+                row = row.split("\t")
+                projects.append(Project(row[0], row[1], int(row[2]), float(row[3]), int(row[4])))
+    except FileNotFoundError:
+        print("File not found.")
+    return projects
+
 
 
 main()
