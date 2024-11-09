@@ -5,6 +5,8 @@ Actual time:
 
 from prac_07.project import Project
 from datetime import datetime
+from operator import attrgetter
+
 
 PROJECT_FILENAME = 'projects.txt'
 
@@ -30,16 +32,22 @@ def main():
             projects = load_project_data(filename, projects)
             # print(projects)
 
-        if choice == "S":
+        elif choice == "S":
             filename = input("Please enter a filename to save to: ")
             save_project(filename, projects)
 
-        if choice == "D":
+        elif choice == "D":
             display_projects(projects)
 
-        if choice == "F":
-            break
-        if choice == "A":
+        elif choice == "F":
+            date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+            start_date = datetime.strptime(date_string, "%d/%m/%Y").date()
+            for project in sorted(projects, key=attrgetter("start_date")):
+                 if project.start_date >= start_date:
+                     print(f"   {project}")
+
+
+        elif choice == "A":
             projects = add_project(projects)
 
         if choice == "U":
