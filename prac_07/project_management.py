@@ -31,22 +31,11 @@ def main():
             # print(projects)
 
         if choice == "S":
-            break
+            filename = input("Please enter a filename to save to: ")
+            save_project(filename, projects)
 
         if choice == "D":
-            """Display incomplete and complete projects without numbered indexing, or all projects with numbered indexing"""
-            for i, project in enumerate(projects):
-                print(f"{i}   {project}")
-
-            print("Incomplete projects: ")
-            for project in sorted(projects):
-                if not project.is_complete():
-                    print(f"  {project}")
-
-            print("Complete projects: ")
-            for project in sorted(projects):
-                if project.is_complete():
-                    print(f"  {project}")
+            display_projects(projects)
 
         if choice == "F":
             break
@@ -63,14 +52,37 @@ def main():
     # print("Thanks for using this project manager!")
 
 
+def save_project(filename, projects):
+    with open(filename, "w") as out_file:
+        print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percent", file=out_file)
+        for project in projects:
+            print(
+                f'{project.project}\t{project.start_date.strftime("%d/%m/%Y")}\t{project.priority}\t{project.cost}\t{project.percentage}',
+                file=out_file)
+
+
+def display_projects(projects):
+    """Display incomplete and complete projects without numbered indexing, or all projects with numbered indexing"""
+    for i, project in enumerate(projects):
+        print(f"{i}   {project}")
+    print("Incomplete projects: ")
+    for project in sorted(projects):
+        if not project.is_complete():
+            print(f"  {project}")
+    print("Complete projects: ")
+    for project in sorted(projects):
+        if project.is_complete():
+            print(f"  {project}")
+
+
 def add_project(projects):
     print("Let's add a new project")
-    project = input("Name of project: ")
-    start_date = input("Start date (dd/mm/yy): ")
+    project_name = input("Name of project: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
     priority = input("Priority: ")
     cost = int(input("Cost estimate: "))
     percent = int(input("Percent complete: "))
-    projects.append(Project(project, start_date, priority, cost, percent))
+    projects.append(Project(project_name, start_date, priority, cost, percent))
     return projects
 
 def load_project_data(filename, projects):
