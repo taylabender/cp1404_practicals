@@ -9,13 +9,13 @@ from datetime import datetime
 PROJECT_FILENAME = 'projects.txt'
 
 # Display menu
-menu = ("(L)oad projects"
-        "\n(S)ave projects"
-        "\n(D)isplay projects"
-        "\n(F)ilter projects by date"
-        "\n(A)dd new project"
-        "\n(U)pdate project"
-        "\n(Q)uit")
+menu = ("- (L)oad projects"
+        "\n- (S)ave projects"
+        "\n- (D)isplay projects"
+        "\n- (F)ilter projects by date"
+        "\n- (A)dd new project"
+        "\n- (U)pdate project"
+        "\n- (Q)uit")
 
 
 def main():
@@ -35,6 +35,9 @@ def main():
 
         if choice == "D":
             """Display incomplete and complete projects without numbered indexing, or all projects with numbered indexing"""
+            for i, project in enumerate(projects):
+                print(f"{i}   {project}")
+
             print("Incomplete projects: ")
             for project in sorted(projects):
                 if not project.is_complete():
@@ -48,12 +51,27 @@ def main():
         if choice == "F":
             break
         if choice == "A":
-            break
+            projects = add_project(projects)
+
         if choice == "U":
             break
         else:
+            # print("Not a valid choice")
             break
+    # print(menu)
+    # choice = input(">> ").upper()
+    # print("Thanks for using this project manager!")
 
+
+def add_project(projects):
+    print("Let's add a new project")
+    project = input("Name of project: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = input("Priority: ")
+    cost = int(input("Cost estimate: "))
+    percent = int(input("Percent complete: "))
+    projects.append(Project(project, start_date, priority, cost, percent))
+    return projects
 
 def load_project_data(filename, projects):
     # Load file
