@@ -98,13 +98,16 @@ def display_projects(projects):
 
 def add_project(projects):
     """ Add project to projects list."""
-    print("Let's add a new project")
-    project_name = input("Name of project: ")
-    start_date = input("Start date (dd/mm/yyyy): ")
-    priority = input("Priority: ")
-    cost = int(input("Cost estimate: "))
-    percent = int(input("Percent complete: "))
-    projects.append(Project(project_name, start_date, priority, cost, percent))
+    try:
+        print("Let's add a new project")
+        project_name = input("Name of project: ")
+        start_date = input("Start date (dd/mm/yyyy): ")
+        priority = input("Priority: ")
+        cost = int(input("Cost estimate: "))
+        percent = int(input("Percent complete: "))
+        projects.append(Project(project_name, start_date, priority, cost, percent))
+    except ValueError:
+        print("Invalid input. No project has been added.")
     return projects
 
 def load_project_data(filename, projects):

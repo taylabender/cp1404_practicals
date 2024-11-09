@@ -13,7 +13,7 @@ class Project:
 
     def __repr__(self):
         """Return a string representation of project."""
-        return f"{self.project}, start: {self.start_date}, priority {self.priority}, Estimate: ${self.cost:.2f}, completion:{self.percentage:}%"
+        return f"{self.project}, start: {self.start_date.strftime("%d/%m/%Y")}, priority {self.priority}, Estimate: ${self.cost:.2f}, completion:{self.percentage:}%"
 
     def is_complete(self):
         """Return True if the project is 100% complete"""
