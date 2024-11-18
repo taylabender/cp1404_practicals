@@ -2,7 +2,7 @@
 CP1404/CP5632 Practical
 Kivy GUI program to square a number
 Estimate time: 30 minute
-Actual time:
+Actual time: 12 minutes
 """
 
 from kivy.app import App
