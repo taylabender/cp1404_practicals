@@ -1,9 +1,6 @@
 """
 Prac 09 - taxi simulator
 """
-from http.cookiejar import uppercase_escaped_char
-
-from pkg_resources import non_empty_lines
 
 from prac_09.taxi import Taxi
 from prac_09.silver_service_taxi import SilverServiceTaxi
@@ -16,7 +13,7 @@ MENU_LIST = ("q)uit, "
 def main():
     current_taxi = None
     current_bill = 0.0
-    taxi = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
+    taxi = [Taxi("Prius", 100, 1.23), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     print("Let's drive!")
     print(MENU_LIST)
 
@@ -27,8 +24,13 @@ def main():
             print("Taxi's available: ")
             for i, taxi in enumerate(taxi):
                 print(f"{i} - {taxi}")
+        try:
             chosen_taxi = int(input("Choose taxi: "))
             current_taxi = taxi[chosen_taxi]
+        except ValueError:
+            print("Not a valid number")
+        except IndexError:
+            print("Invalid option")
 
         if choice == "D":
             if current_taxi is None:
@@ -43,6 +45,9 @@ def main():
         else:
             print("Invalid option")
         print(f"Bill to date: ${current_bill:.2f}")
-        print("Taxi are now:")
+        print("Taxis are now:")
         for i, taxi in enumerate(taxi):
             print(f"{i} - {taxi}")
+
+
+main()
