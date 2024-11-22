@@ -31,21 +31,18 @@ def main():
             current_taxi = taxi[chosen_taxi]
 
         if choice == "D":
-            break
+            if current_taxi is None:
+                print("You need to choose a taxi before you drive")
+            else:
+                distance = float(input("Drive how far?"))
+                current_taxi.start_fare()
+                current_taxi.drive(distance)
+                cost = current_taxi.get_fare()
+                print(f"Your {current_taxi.name} trip cost you: ${cost:.2f}")
+                current_bill += cost
         else:
-            break
-    # display menu
-    # get choice
-    # while choice != <quit option>
-    #     if choice == <first option>
-    #         <do first task>
-    #     else if choice == <second option>
-    #         <do second task>
-    #     ...
-    #     else if choice == <n-th option>
-    #         <do n-th task>
-    #     else
-    #         display invalid input error message
-    #     display menu
-    #     get choice
-    # <do final thing, if needed>
+            print("Invalid option")
+        print(f"Bill to date: ${current_bill:.2f}")
+        print("Taxi are now:")
+        for i, taxi in enumerate(taxi):
+            print(f"{i} - {taxi}")
