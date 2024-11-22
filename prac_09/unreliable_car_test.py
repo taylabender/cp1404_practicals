@@ -1,21 +1,15 @@
 """
-Prac 09 - Unreliable car
+Prac 09 - Unreliable Car Class Testing
 """
+from prac_09.unreliable_car import UnreliableCar
 
-from prac_09.car import Car
-import random
+my_car = UnreliableCar("Car", 100, 40)
+my_car.drive(30)
+print(f"Car has fuel: {my_car.fuel}")
+print(my_car)
 
-
-class UnreliableCar(Car):
-    def __init__(self, name, fuel, reliability: float):
-        super().__init__(name, fuel)
-        self.reliability = reliability
-
-    def __str__(self):
-        return f"{super().__str__()}, reliability: {self.reliability})"
-
-    def drive(self, distance):
-        if random.uniform(0, 100) < self.reliability:
-            super().drive(distance)
-        else:
-            return 0
+limo = UnreliableCar("Limo", 80, 90)
+limo.add_fuel(20)
+print(f"Car has fuel: {limo.fuel}")
+limo.drive(115)
+print(limo)
