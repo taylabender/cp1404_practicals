@@ -37,6 +37,7 @@ def main():
 
 
 def drive_taxi(current_bill, current_taxi):
+    """ Drive taxi after choosing taxi number. """
     if current_taxi is None:
         print("You need to choose a taxi before you drive")
     else:
@@ -53,6 +54,7 @@ def drive_taxi(current_bill, current_taxi):
 
 
 def choose_taxi(current_taxi, taxis):
+    """ Choose taxi number. """
     print("Taxis available: ")
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
