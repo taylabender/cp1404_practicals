@@ -45,7 +45,10 @@ def convert_phrase_to_sentence(phrase):
     """
     >>> convert_phrase_to_sentence('hello')
     'Hello.'
-
+    >>> convert_phrase_to_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> convert_phrase_to_sentence('i need sleep')
+    'I need sleep.'
     """
     if phrase[-1] != ".":
         phrase += "."
